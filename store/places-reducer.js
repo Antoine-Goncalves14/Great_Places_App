@@ -10,12 +10,12 @@ export default (state = initialState, action) => {
     case SET_PLACES:
       return {
         places: action.places.map(
-          (pl) => new Place(pl.id.toString(), pl.title, pl.imageUri),
+          (pl) => new Place(String(pl.id), pl.title, pl.imageUri),
         ),
       };
     case ADD_PLACE:
       const newPlace = new Place(
-        action.placeData.id.toString(),
+        String(action.placeData.id),
         action.placeData.title,
         action.placeData.image,
       );
