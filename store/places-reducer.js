@@ -10,7 +10,15 @@ export default (state = initialState, action) => {
     case SET_PLACES:
       return {
         places: action.places.map(
-          (pl) => new Place(String(pl.id), pl.title, pl.imageUri),
+          (pl) =>
+            new Place(
+              String(pl.id),
+              pl.title,
+              pl.imageUri,
+              pl.address,
+              pl.lat,
+              pl.lng,
+            ),
         ),
       };
     case ADD_PLACE:
@@ -18,6 +26,9 @@ export default (state = initialState, action) => {
         String(action.placeData.id),
         action.placeData.title,
         action.placeData.image,
+        action.placeData.address,
+        action.placeData.coords.lat,
+        action.placeData.coords.lng,
       );
 
       return {
